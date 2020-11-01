@@ -13,17 +13,15 @@ const reset = () => {
 //
 $('.cell').click(function () {
   if (this.innerHTML === '') {
-    player = counter % 2 === 0 ? 'X' : 'O'
-    console.log('player: ' + player)
-    console.log('counter before : ' + counter)
-    console.log('counter after : ' + counter)
+    player = counter % 2 === 0 ? '❌' : '⚪️'
     $(this).text(player)
     counter++
-    $('#header').text(`PLAYER ${counter % 2 === 0 ? 'X' : 'O'} TURN`)
+    $('#header').text(`PLAYER ${counter % 2 === 0 ? '❌' : '⚪️'} TURN`)
     if (win(player)) {
-      $(this).text(player)
-      alert(`${player} WINS!`)
-      reset()
+      window.setTimeout(() => {
+        alert(`${player} WINS!`)
+        reset()
+      }, 500)
     }
     if (counter === 8) {
       alert('Game over!')
